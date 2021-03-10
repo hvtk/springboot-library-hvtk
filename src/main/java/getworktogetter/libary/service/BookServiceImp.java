@@ -4,14 +4,18 @@ import getworktogetter.libary.exception.RecordNotFoundException;
 import getworktogetter.libary.model.Book;
 import getworktogetter.libary.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.List;
+
+@Service
 public class BookServiceImp implements BookService {
 
     @Autowired
     private BookRepository bookRepository;
 
     @Override
-    public List(Book) getAllBook() {
+    public List<Book> getAllBooks() {
         return bookRepository.findAll();
     }
 
@@ -31,7 +35,12 @@ public class BookServiceImp implements BookService {
     }
 
     @Override
-    public void deleteByID(lomg id) {
+    public void save(Book book) {
+        bookRepository.save(book);
+    }
+
+    @Override
+    public void deleteById(long id) {
         if (bookRepository.existsById(id)) {
             bookRepository.deleteById(id);
         }

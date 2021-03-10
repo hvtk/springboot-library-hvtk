@@ -1,5 +1,9 @@
 package getworktogetter.libary.controller;
 
+import getworktogetter.libary.exception.NotAuthorizedException;
+
+import getworktogetter.libary.exception.RecordNotFoundException;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

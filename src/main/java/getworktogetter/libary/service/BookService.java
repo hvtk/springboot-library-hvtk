@@ -1,6 +1,7 @@
 package getworktogetter.libary.service;
 
 import getworktogetter.libary.model.Book;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package getworktogetter.libary.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "books")
@@ -23,7 +24,7 @@ public class Book {
     private String publisher;
 
     @OneToMany(mappedBy = "book")
-    List<Excemplaar> exemplaren;
+    List<Exemplaar> exemplaren;
 
     // getters and setters
 
@@ -58,6 +59,5 @@ public class Book {
     public void setPublisher(String publisher) {
         this.publisher = publisher;
     }
-
 }
 
