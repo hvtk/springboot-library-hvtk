@@ -14,28 +14,28 @@ import java.util.Optional;
 public class BookController {
 
     @Autowired
-    private BookRepository BookRepository;
+    private BookService BookService;
 
     @GetMapping(value = "/books")
     public ResponseEntity<Object> getBooks() {
-        List<Book> books = BookRepository.findAll();
+        List<Book> books = BookService.getAllBooks();
         return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
     @GetMapping(value = "/books/{id}")
-    public ResponseEntity<Optional<Book>> getBook(@PathVariable("id") long id) {
-        return new ResponseEntity<>(BookRepository.findById(id), HttpStatus.OK);
+    public ResponseEntity<Object> getBook(@PathVariable("id") long id) {
+        return new ResponseEntity<>(BookService.getBook(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/books")
     public ResponseEntity<Object> createBook(@RequestBody Book book) {
-        BookRepository.save(book);
+        BookService.save(book);
         return new ResponseEntity<>("Book created", HttpStatus.CREATED);
     }
 
     @DeleteMapping(value = "/books/{id}")
     public ResponseEntity<Object> deleteBook(@PathVariable("id") long id) {
-        BookRepository.deleteById(id);
+        BookService.deleteById(id);
         return new ResponseEntity<>("Book deleted", HttpStatus.OK);
     }
 }
